@@ -1,5 +1,5 @@
 ## Launch-Lever
-
+[![npm version](https://badge.fury.io/js/launch-lever.svg)](https://www.npmjs.com/package/launch-lever)
 The easiest way to manage feature toggles in JS/TS applications.
 
 ### Features
