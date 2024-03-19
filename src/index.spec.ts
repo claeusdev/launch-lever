@@ -1,19 +1,25 @@
-import { isBoolean } from "./index";
+import { LaunchLever, Toggle } from "./index";
 
-test("it should return true if given value is of type boolean", () => {
-  expect(isBoolean(true)).toEqual(true);
+const flags: Toggle[] = [
+  {
+    name: "pfx_123",
+    description: "Some new feature we're releasing soon.",
+    status: "on",
+  },
+];
+
+test("it should return 'on' is status is on", () => {
+  const toggles = new LaunchLever(flags).flags;
+  expect(toggles.pfx_123).toEqual("on");
 });
 
-test("it should return true if given value is false", () => {
-  expect(isBoolean(false)).toEqual(true);
-});
-
-test("it should return true if given value is true", () => {
-  expect(isBoolean(true)).toEqual(true);
-});
-
-test("it should return false for truthy/falsy values", () => {
-  expect(isBoolean("")).toEqual(false);
-  expect(isBoolean(null)).toEqual(false);
-  expect(isBoolean(undefined)).toEqual(false);
+test("it should return 'off' is status is off", () => {
+  const toggles = new LaunchLever([
+    {
+      name: "pfx_123",
+      description: "some stuff",
+      status: "off",
+    },
+  ]).flags;
+  expect(toggles.pfx_123).toEqual("off");
 });
