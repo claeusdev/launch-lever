@@ -34,7 +34,7 @@
     "test": "jest",
     "test:watch": "yarn test -- --watchAll",
     "prebuild": "rm -rf dist && rm -rf build",
-    "postinstall": "husky install",
+    "_postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
