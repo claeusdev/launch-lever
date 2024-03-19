@@ -38,6 +38,10 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/claeusdev/launch-lever.git"
+  },
   "lint-staged": {
     "src/**/*.ts": [
       "prettier --write",
