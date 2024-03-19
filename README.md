@@ -67,6 +67,7 @@ Use your toggle names by simply checking if they're turned `on`
 if(pfx_123 === "on") {
 //show some button
 }
+```
 
 ### Contributing and Support
 
