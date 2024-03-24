@@ -1,15 +1,8 @@
-export interface Toggle {
-  name: string;
-  description: string;
-  status: "on" | "off";
-}
+import { Toggle, ToggleStatus, ToggleStatuses } from "./types";
 
-type ToggleStatus = "on" | "off";
-interface ToggleStatuses {
-  [key: string]: ToggleStatus;
+export function isOn(status: ToggleStatus): boolean {
+  return status === "on";
 }
-
-export const isOn = (status: ToggleStatus): boolean => status === "on";
 
 export class LaunchLever {
   _flags: Toggle[] = [];

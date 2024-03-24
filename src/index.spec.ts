@@ -1,4 +1,5 @@
-import { LaunchLever, Toggle, isOn } from "./index";
+import { LaunchLever, isOn } from "./index";
+import { Toggle } from "./types";
 
 const flags: Toggle[] = [
   {
