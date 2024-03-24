@@ -1,6 +1,6 @@
 {
   "name": "launch-lever",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "A very simple way to manage feature toggles in UI apps",
   "main": "build/index.umd.js",
   "author": "Nana Adjei Manu",
