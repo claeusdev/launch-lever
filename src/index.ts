@@ -4,14 +4,21 @@ export interface Toggle {
   status: "on" | "off";
 }
 
+type ToggleStatus = "on" | "off";
 interface ToggleStatuses {
-  [key: string]: "on" | "off";
+  [key: string]: ToggleStatus;
 }
+
+export const isOn = (status: ToggleStatus): boolean => status === "on";
 
 export class LaunchLever {
   _flags: Toggle[] = [];
   constructor(flags: Toggle[]) {
     this._flags = flags;
+  }
+
+  get toggles(): Toggle[] {
+    return this._flags;
   }
 
   get flags() {
@@ -22,7 +29,3 @@ export class LaunchLever {
     return toggles;
   }
 }
-
-export default {
-  LaunchLever,
-};
