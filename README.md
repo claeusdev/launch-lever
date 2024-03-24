@@ -35,7 +35,7 @@ yarn add launch-lever
 launch-lever exports a class `LaunchLever` together with some types for `Toggle`.
 
 ```js
-import { Toggle } from "launch-lever";
+import { Toggle, LaunchLever, isOn } from "launch-lever";
 
 // export interface Toggle {
 //   name: string;
@@ -63,10 +63,10 @@ Pass your JSON to the constructor.
 const { pfx_123, pfx_1255 } = new LaunchLever(flags).flags
 ```
 
-Use your toggle names by simply checking if they're turned `on`
+Use your toggle names by simply checking if they're turned `on` with the very handy `isOn` function.
 
 ```ts
-if(pfx_123 === "on") {
+if(isOn(pfx_123)) {
 //show some button
 }
 ```
