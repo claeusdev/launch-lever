@@ -6,31 +6,7 @@ export function isOn(status: ToggleStatus): boolean {
   return status === "on";
 }
 
-type fileType = "yml" | "json"
 
-class FileParser {
-  _filename: string = ""
-  _type: fileType = "yml"
-  constructor(filename: string, type: fileType = "yml") {
-    this._filename = filename
-    this._type = type
-  }
-}
-
-
-class YamlParser extends FileParser {
-  _yamlFlags = {}
-  readFile() {
-    const yamlObj = readFileSync("./src/file.yml", "utf8")
-    this._yamlFlags = yamlObj
-    console.log({ yamlObj })
-    return this
-  }
-
-  getFlags() {
-    return this._yamlFlags
-  }
-}
 
 const yamlFlags = new YamlParser("file.yml").readFile()
 

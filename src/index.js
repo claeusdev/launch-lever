@@ -17,6 +17,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LaunchLever = exports.isOn = void 0;
 var node_fs_1 = require("node:fs");
+var yaml_1 = require("yaml");
 function isOn(status) {
     return status === "on";
 }
@@ -35,13 +36,19 @@ var YamlParser = /** @class */ (function (_super) {
     __extends(YamlParser, _super);
     function YamlParser() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this._yamlFlags = {};
+        _this._yamlFlags = [];
         return _this;
     }
     YamlParser.prototype.readFile = function () {
         var yamlObj = (0, node_fs_1.readFileSync)("./src/file.yml", "utf8");
-        this._yamlFlags = yamlObj;
-        console.log({ yamlObj: yamlObj });
+        var flags = (0, yaml_1.parse)(yamlObj);
+        for (var key in flags) {
+            this._yamlFlags.push({
+                name: key,
+                description: flags[key].description[0],
+                status: flags[key].status[0]
+            });
+        }
         return this;
     };
     YamlParser.prototype.getFlags = function () {
