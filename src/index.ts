@@ -1,21 +1,14 @@
-import { readFileSync } from "node:fs"
-import { parse } from "yaml"
 import { Toggle, ToggleStatus, ToggleStatuses } from "./types";
+import { YamlParser } from "./YamlParser"
 
 export function isOn(status: ToggleStatus): boolean {
   return status === "on";
 }
 
-
-
-const yamlFlags = new YamlParser("file.yml").readFile()
-
-console.log(yamlFlags.getFlags())
-
 export class LaunchLever {
   _flags: Toggle[] = [];
-  constructor(flags: Toggle[]) {
-    this._flags = flags;
+  constructor(flagsFile: string) {
+    this._flags = new YamlParser(flagsFile).readFile().getFlags()
   }
 
   toggles(): Toggle[] {
@@ -30,3 +23,6 @@ export class LaunchLever {
     return toggles;
   }
 }
+
+const flags = new LaunchLever("./src/file.yml")
+console.log(flags.flags())

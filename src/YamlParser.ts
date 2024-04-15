@@ -6,7 +6,7 @@ import { Toggle } from "./types"
 export class YamlParser extends FileParser {
   _yamlFlags: Toggle[] = []
   readFile() {
-    const yamlObj = readFileSync("./src/file.yml", "utf8")
+    const yamlObj = readFileSync(this._filename, "utf8")
     const flags = parse(yamlObj)
     for (let key in flags) {
       this._yamlFlags.push({
