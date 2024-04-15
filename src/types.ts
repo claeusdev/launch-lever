@@ -9,3 +9,5 @@ export type ToggleStatus = "on" | "off";
 export interface ToggleStatuses {
   [key: string]: ToggleStatus;
 }
+
+export type fileType = "yml" | "json"

@@ -1,0 +1,5 @@
+pfx-123:
+  description:
+    - "A simple dark mode"
+  status:
+    - on
