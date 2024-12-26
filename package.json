@@ -5,6 +5,7 @@
   "main": "build/index.umd.js",
   "author": "Nana Adjei Manu",
   "license": "MIT",
+  "moduleResolution": "nodenext",
   "files": [
     "build"
   ],

@@ -1,24 +1,29 @@
-import { Toggle, ToggleStatus, ToggleStatuses } from "./types";
-
-export function isOn(status: ToggleStatus): boolean {
-  return status === "on";
-}
+import { Toggle, ToggleStatus, ToggleStatuses, ToggleStore } from "./types";
+import * as core from "./core/lever";
 
 export class LaunchLever {
-  _flags: Toggle[] = [];
-  constructor(flags: Toggle[]) {
-    this._flags = flags;
-  }
+  private static _toggles: ToggleStore = {};
 
-  get toggles(): Toggle[] {
-    return this._flags;
-  }
-
-  get flags() {
-    let toggles: ToggleStatuses = {};
-    for (let t of this._flags) {
-      toggles[t.name] = t.status;
+  static fromList(list: Toggle[]): ToggleStore {
+    for (let t of list) {
+      this._toggles[t.name] = new core.Lever(
+        t.name,
+        t.status,
+        t.description
+      ) as unknown as Toggle;
     }
-    return toggles;
+    return this._toggles;
+  }
+
+  static fromJson(fileName: string) {
+    console.log("filename");
+  }
+
+  static toggles(): ToggleStore {
+    return this._toggles;
+  }
+
+  static isOn(name: string) {
+    return this.toggles()[name].status == "on";
   }
 }
