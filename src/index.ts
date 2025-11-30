@@ -36,10 +36,8 @@ export class LaunchLever {
         const lever = Lever.fromToggle(toggle);
         newToggles[lever.name] = lever.toJSON();
       } catch (error) {
-        if (error instanceof Error) {
-          throw new Error(`Invalid toggle "${toggle.name}": ${error.message}`);
-        }
-        throw error;
+        const message = error instanceof Error ? error.message : String(error);
+        throw new Error(`Invalid toggle "${toggle.name}": ${message}`);
       }
     }
     this._toggles = newToggles;
@@ -98,7 +96,7 @@ export class LaunchLever {
    * Gets a specific toggle by name
    */
   get(name: string): Toggle | undefined {
-    if (!name || typeof name !== "string") {
+    if (typeof name !== "string" || !name) {
       if (this.config.strict) {
         throw new Error("Toggle name must be a non-empty string");
       }
@@ -121,14 +119,6 @@ export class LaunchLever {
   }
 
   /**
-   * Checks if a toggle is turned off
-   */
-  isOff(name: string): boolean {
-    const toggle = this.get(name);
-    return toggle?.status === "off";
-  }
-
-  /**
    * Checks if a toggle exists
    */
   has(name: string): boolean {
@@ -148,13 +138,6 @@ export class LaunchLever {
   clear(): LaunchLever {
     this._toggles = {};
     return this;
-  }
-
-  /**
-   * Resets the instance to a new state
-   */
-  reset(): LaunchLever {
-    return this.clear();
   }
 }
 

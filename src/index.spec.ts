@@ -106,23 +106,6 @@ describe("LaunchLever", () => {
     });
   });
 
-  describe("isOff", () => {
-    test("it should return true for off toggle", () => {
-      expect(lever.isOff("pfx_123")).toBe(true);
-    });
-
-    test("it should return false for on toggle", () => {
-      lever.fromList([
-        {
-          name: "pfx_on",
-          description: "on toggle",
-          status: "on",
-        },
-      ]);
-      expect(lever.isOff("pfx_on")).toBe(false);
-    });
-  });
-
   describe("get", () => {
     test("it should return toggle by name", () => {
       const toggle = lever.get("pfx_123");

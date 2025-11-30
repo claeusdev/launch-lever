@@ -47,18 +47,6 @@ describe("Lever", () => {
     });
   });
 
-  describe("isOff", () => {
-    test("it should return true when status is off", () => {
-      const lever = new Lever("test", "off", "description");
-      expect(lever.isOff()).toBe(true);
-    });
-
-    test("it should return false when status is on", () => {
-      const lever = new Lever("test", "on", "description");
-      expect(lever.isOff()).toBe(false);
-    });
-  });
-
   describe("withStatus", () => {
     test("it should create a new lever with updated status", () => {
       const lever = new Lever("test", "on", "description");

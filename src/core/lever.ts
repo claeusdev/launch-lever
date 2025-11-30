@@ -43,13 +43,6 @@ export class Lever implements Toggle {
   }
 
   /**
-   * Checks if the lever is turned off
-   */
-  isOff(): boolean {
-    return this.status === "off";
-  }
-
-  /**
    * Creates a new Lever with updated status
    */
   withStatus(status: ToggleStatus): Lever {
